@@ -1,0 +1,19 @@
+{
+  "name": "mongodb-university-m101js",
+  "version": "0.0.0",
+  "description": "Going through the Mongo DB University video tutorials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bradleybossard/mongodb-university-m101js.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bradleybossard/mongodb-university-m101js/issues"
+  },
+  "homepage": "https://github.com/bradleybossard/mongodb-university-m101js"
+}
