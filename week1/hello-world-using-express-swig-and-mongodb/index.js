@@ -7,9 +7,8 @@ var app = express()
 
 var port = 9100;
 
-var mongoclient = new MongoClient(new Server('localhost', 27019, {'native_parser' : true}));
+var mongoclient = new MongoClient(new Server('localhost', 27017));
 var db = mongoclient.db('course');
-//var db;
 // No connection to mongo at this point, just setting up connection information.
 
 app.engine('html', cons.swig);
@@ -18,6 +17,8 @@ app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res) {
   db.collection('hello_mongo_express').findOne({}, function(err, doc) {
+    if (err) throw err;
+
     res.render('hello', doc);
   });
 });
@@ -27,12 +28,9 @@ app.get('*', function(req, res) {
   res.status(404).send('Page not found');
 });
 
-console.log('point0');
-mongoclient.connect(function (err, client) {
-  console.log('point1');
-  if (err) throw err;
+mongoclient.open(function (err, mongoclient) {
 
-  db = client.db('course');
+  if (err) throw err;
 
   app.listen(9100);
   console.log('Server running on localhost:' + port);
